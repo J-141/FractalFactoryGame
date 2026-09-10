@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Nodes/FieldRenderer/BoxRenderer.cs" id="1_renderer"]
+
+[node name="BoxRenderer" type="Node"]
+script = ExtResource("1_renderer")
+
+[node name="RenderViewport" type="SubViewport" parent="."]
+transparent_bg = true
+disable_3d = true
+size = Vector2i(512, 512)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="RenderViewport"]
+
+[node name="HistoryViewport" type="SubViewport" parent="."]
+transparent_bg = true
+disable_3d = true
+size = Vector2i(512, 512)
+render_target_update_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="HistoryViewport"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 0

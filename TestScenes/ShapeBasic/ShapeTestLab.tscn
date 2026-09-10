@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cgyyrh1lan1yj"]
+
+[ext_resource type="Script" uid="uid://c03f1mwiq4y7b" path="res://TestScenes/ShapeBasic/ShapeTestLab.cs" id="1_m0hy7"]
+[ext_resource type="PackedScene" uid="uid://cymr8bimp0gyl" path="res://TestScenes/ShapeBasic/ExpandedShapeDebugView.tscn" id="1_mipao"]
+[ext_resource type="PackedScene" uid="uid://bllkrtxvtr4mw" path="res://TestScenes/ShapeBasic/ShapeDebugView.tscn" id="3_p4cer"]
+
+[node name="ShapeTestLab" type="Node2D" unique_id=1931588416]
+script = ExtResource("1_m0hy7")
+
+[node name="ExpandedView" parent="." unique_id=1937393046 instance=ExtResource("1_mipao")]
+position = Vector2(746, 346)
+
+[node name="SourceView" parent="." unique_id=1664792234 instance=ExtResource("3_p4cer")]
+position = Vector2(248, 334)
+
+[node name="UI" type="Control" parent="." unique_id=808731555]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI" unique_id=1833658678]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ExpandButton" type="Button" parent="UI/HBoxContainer" unique_id=528764551]
+layout_mode = 2
+text = "expand"
+
+[node name="ContractButton" type="Button" parent="UI/HBoxContainer" unique_id=365265040]
+layout_mode = 2
+text = "contract"
+
+[node name="RotateButton" type="Button" parent="UI/HBoxContainer" unique_id=178302659]
+layout_mode = 2
+text = "rotate"

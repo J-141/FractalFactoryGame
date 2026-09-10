@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bllkrtxvtr4mw"]
+
+[ext_resource type="Script" uid="uid://dmgbjt3qruhlf" path="res://TestScenes/ShapeBasic/ShapeDebugView.cs" id="1_5qcsm"]
+
+[node name="ShapeDebugView" type="Node2D" unique_id=1664792234]
+script = ExtResource("1_5qcsm")

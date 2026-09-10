@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://Nodes/FieldRenderer/WorldRendererRoot.cs" id="1_root"]
+[ext_resource type="PackedScene" path="res://Nodes/FieldRenderer/BoxRendererManager.tscn" id="2_manager"]
+[ext_resource type="PackedScene" path="res://Nodes/FieldRenderer/ShapeStructureRenderer.tscn" id="3_shapes"]
+[ext_resource type="PackedScene" path="res://Nodes/FieldRenderer/EmbeddedBoxReferenceRenderer.tscn" id="4_references"]
+
+[node name="WorldRendererRoot" type="Node2D"]
+script = ExtResource("1_root")
+chunk_size = 32
+
+[node name="WorldContent" type="Node2D" parent="."]
+
+[node name="ShapeStructureRenderer" parent="WorldContent" instance=ExtResource("3_shapes")]
+
+[node name="EmbeddedBoxReferenceRenderer" parent="WorldContent" instance=ExtResource("4_references")]
+
+[node name="WorldOverlay" type="Node2D" parent="."]
+
+[node name="BoxRendererManager" parent="." instance=ExtResource("2_manager")]

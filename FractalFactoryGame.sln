@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37531.7
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FractalFactoryGame", "FractalFactoryGame.csproj", "{F1484ED6-F7C2-44A6-8C6E-E8D5AA0ECFE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "..\UnitTest\UnitTest.csproj", "{2A084145-3A00-479E-A9A7-13C89C26A845}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		ExportDebug|Any CPU = ExportDebug|Any CPU
+		ExportRelease|Any CPU = ExportRelease|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F1484ED6-F7C2-44A6-8C6E-E8D5AA0ECFE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1484ED6-F7C2-44A6-8C6E-E8D5AA0ECFE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1484ED6-F7C2-44A6-8C6E-E8D5AA0ECFE1}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{F1484ED6-F7C2-44A6-8C6E-E8D5AA0ECFE1}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{F1484ED6-F7C2-44A6-8C6E-E8D5AA0ECFE1}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{F1484ED6-F7C2-44A6-8C6E-E8D5AA0ECFE1}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+		{2A084145-3A00-479E-A9A7-13C89C26A845}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A084145-3A00-479E-A9A7-13C89C26A845}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A084145-3A00-479E-A9A7-13C89C26A845}.ExportDebug|Any CPU.ActiveCfg = Release|Any CPU
+		{2A084145-3A00-479E-A9A7-13C89C26A845}.ExportDebug|Any CPU.Build.0 = Release|Any CPU
+		{2A084145-3A00-479E-A9A7-13C89C26A845}.ExportRelease|Any CPU.ActiveCfg = Release|Any CPU
+		{2A084145-3A00-479E-A9A7-13C89C26A845}.ExportRelease|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {471577F8-030E-4701-9E76-953DCC81B0DD}
+	EndGlobalSection
+EndGlobal

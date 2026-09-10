@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cnim3gkggdgg0"]
+
+[ext_resource type="Script" uid="uid://cak4iw786ogmw" path="res://TestScenes/TriangleGrid/TriangleGridTestScene.cs" id="1_x3dq6"]
+
+[node name="TriangleGridTestScene" type="Node2D" unique_id=1541663716]
+script = ExtResource("1_x3dq6")
+
+[node name="Label" type="Label" parent="." unique_id=1681582284]
+offset_left = 553.0
+offset_top = 318.0
+offset_right = 593.0
+offset_bottom = 341.0

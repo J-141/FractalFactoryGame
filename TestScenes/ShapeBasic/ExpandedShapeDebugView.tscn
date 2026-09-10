@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cymr8bimp0gyl"]
+
+[ext_resource type="Script" uid="uid://c0htd56iipjvl" path="res://TestScenes/ShapeBasic/ExpandedShapeDebugView.cs" id="1_ghxav"]
+[ext_resource type="PackedScene" uid="uid://bllkrtxvtr4mw" path="res://TestScenes/ShapeBasic/ShapeDebugView.tscn" id="2_6xds3"]
+
+[node name="ExpandedShapeDebugView" type="Node2D" unique_id=1937393046]
+script = ExtResource("1_ghxav")
+
+[node name="C0" parent="." unique_id=1664792234 instance=ExtResource("2_6xds3")]
+position = Vector2(380, 195)
+
+[node name="C1" parent="." unique_id=593854712 instance=ExtResource("2_6xds3")]
+position = Vector2(721, 193)
+
+[node name="C2" parent="." unique_id=456466856 instance=ExtResource("2_6xds3")]
+position = Vector2(568, 474)
+
+[node name="C3" parent="." unique_id=1917884552 instance=ExtResource("2_6xds3")]
+position = Vector2(553, 306)

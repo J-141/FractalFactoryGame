@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c82kx8x02ceg"]
+
+[ext_resource type="Script" uid="uid://cdtdrybupi47y" path="res://Nodes/FieldRenderer/BoxRendererManager.cs" id="1_manager"]
+[ext_resource type="PackedScene" path="res://Nodes/FieldRenderer/BoxRenderer.tscn" id="2_box_renderer"]
+
+[node name="BoxRendererManager" type="Node" unique_id=423357429]
+script = ExtResource("1_manager")
+BoxRendererScene = ExtResource("2_box_renderer")
