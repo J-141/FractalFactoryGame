@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://bltrt81w4wj10"]
+
+[ext_resource type="Script" uid="uid://bgb0qn4loru2a" path="res://Nodes/UI/Inventory/InventoryUI.cs" id="1_dcsnj"]
+[ext_resource type="Script" uid="uid://c5hha7c7mkcju" path="res://Nodes/UI/HexGridContainer.cs" id="2_hex_grid"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_full"]
+bg_color = Color(0.07, 0.07, 0.075, 0.97)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.35, 0.35, 0.38, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="InventoryUI" type="CanvasLayer" unique_id=2051158222]
+layer = 100
+script = ExtResource("1_dcsnj")
+
+[node name="Root" type="Control" parent="." unique_id=1710898134]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="FullInventoryBlocker" type="Control" parent="Root" unique_id=1054917214]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dim" type="ColorRect" parent="Root/FullInventoryBlocker" unique_id=186256527]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.3)
+
+[node name="FullCenter" type="CenterContainer" parent="Root/FullInventoryBlocker" unique_id=1863427776]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="FullInventoryPanel" type="PanelContainer" parent="Root/FullInventoryBlocker/FullCenter" unique_id=1847104389]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_full")
+
+[node name="FullMargin" type="MarginContainer" parent="Root/FullInventoryBlocker/FullCenter/FullInventoryPanel" unique_id=1626816946]
+layout_mode = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 22
+
+[node name="FullLayout" type="VBoxContainer" parent="Root/FullInventoryBlocker/FullCenter/FullInventoryPanel/FullMargin" unique_id=1301648827]
+layout_mode = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="Title" type="Label" parent="Root/FullInventoryBlocker/FullCenter/FullInventoryPanel/FullMargin/FullLayout" unique_id=2040055527]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Inventory"
+horizontal_alignment = 1
+
+[node name="FullSlots" type="Container" parent="Root/FullInventoryBlocker/FullCenter/FullInventoryPanel/FullMargin/FullLayout" unique_id=2076466897]
+layout_mode = 2
+script = ExtResource("2_hex_grid")
+
+[node name="BottomCenter" type="CenterContainer" parent="Root" unique_id=406742176]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -86.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="BottomBar" type="HBoxContainer" parent="Root/BottomCenter" unique_id=605953288]
+layout_mode = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="HotbarSlots" type="Container" parent="Root/BottomCenter/BottomBar" unique_id=2113765079]
+layout_mode = 2
+script = ExtResource("2_hex_grid")
+
+[node name="HeldSlots" type="Container" parent="Root/BottomCenter/BottomBar" unique_id=1071430535]
+layout_mode = 2
+script = ExtResource("2_hex_grid")

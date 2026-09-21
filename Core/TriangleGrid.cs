@@ -38,14 +38,15 @@ public readonly record struct TriangleVertices(
                 m20),
 
             1 => new TriangleVertices(
+                m01,
                 V1,
-                m12,
-                m01),
+                m12
+                ),
 
             2 => new TriangleVertices(
-                V2,
                 m20,
-                m12),
+                m12,
+                V2),
 
             3 => new TriangleVertices(
                 m12,
@@ -274,6 +275,46 @@ public sealed class TriangleGrid {
             v0,
             v1,
             v2);
+    }
+
+
+    /// <summary>
+    /// Inverse of TriangleGrid.TransformCell(local, anchor, rotation).
+    /// </summary>
+    public static TriangleGridPosition InverseTransformCell(
+        TriangleGridPosition worldCell,
+        Vector2I anchor,
+        int gridRotation) {
+
+        var (
+            worldV0,
+            worldV1,
+            worldV2) =
+                GetCellVertices(
+                    worldCell);
+
+        int inverseRotation =
+            (6 - gridRotation) % 6;
+
+        Vector2I localV0 =
+            RotateVertex(
+                worldV0 - anchor,
+                inverseRotation);
+
+        Vector2I localV1 =
+            RotateVertex(
+                worldV1 - anchor,
+                inverseRotation);
+
+        Vector2I localV2 =
+            RotateVertex(
+                worldV2 - anchor,
+                inverseRotation);
+
+        return TriangleGrid.GetCellFromVertices(
+            localV0,
+            localV1,
+            localV2);
     }
 
 
@@ -765,55 +806,80 @@ public sealed class TriangleGrid {
             _ => throw new UnreachableException(),
         };
     }
+    /// <summary>
+    /// Return the four scale-2 children in the same semantic child order used
+    /// by TriangleVertices.GetChild() and ShapeStore.Contract():
+    ///
+    ///     0 = C0, outer child at parent V0
+    ///     1 = C1, outer child at parent V1
+    ///     2 = C2, outer child at parent V2
+    ///     3 = C3, center child
+    ///
+    /// This ordering is part of the API contract.
+    /// </summary>
     public static IEnumerable<TriangleGridPosition>
     GetScale2Children(
         TriangleGridPosition parent) {
-        int x = parent.X * 2;
-        int y = parent.Y * 2;
 
-        if (parent.Facing == TriangleFacing.Down) {
+        int x =
+            parent.X * 2;
+
+        int y =
+            parent.Y * 2;
+
+        if (parent.Facing ==
+            TriangleFacing.Down) {
+
+            // C0: parent V0.
             yield return new(
                 x,
                 y,
                 TriangleFacing.Down);
 
-            yield return new(
-                x,
-                y,
-                TriangleFacing.Up);
-
+            // C1: parent V1.
             yield return new(
                 x + 1,
                 y,
                 TriangleFacing.Down);
 
+            // C2: parent V2.
             yield return new(
                 x,
                 y + 1,
                 TriangleFacing.Down);
 
+            // C3: center.
+            yield return new(
+                x,
+                y,
+                TriangleFacing.Up);
+
             yield break;
         }
 
+        // C0: parent V0.
         yield return new(
             x + 1,
             y + 1,
             TriangleFacing.Up);
 
-        yield return new(
-            x + 1,
-            y + 1,
-            TriangleFacing.Down);
-
+        // C1: parent V1.
         yield return new(
             x,
             y + 1,
             TriangleFacing.Up);
 
+        // C2: parent V2.
         yield return new(
             x + 1,
             y,
             TriangleFacing.Up);
+
+        // C3: center.
+        yield return new(
+            x + 1,
+            y + 1,
+            TriangleFacing.Down);
     }
     public static TriangleGridPosition GetScale2Parent(
     TriangleGridPosition child) {

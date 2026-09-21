@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://daqo864uj4oif"]
+
+[ext_resource type="Script" uid="uid://c7wvw8a588ype" path="res://TestScenes/Inventory/InventoryUISandbox.cs" id="1_ou66x"]
+[ext_resource type="PackedScene" uid="uid://bltrt81w4wj10" path="res://Nodes/UI/Inventory/InventoryUI.tscn" id="2_t7aaa"]
+
+[node name="InventoryUISandbox" type="Node" unique_id=1399692102]
+script = ExtResource("1_ou66x")
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=126423672]
+layer = -10
+
+[node name="Background" type="ColorRect" parent="BackgroundLayer" unique_id=1969209933]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.025, 0.03, 0.04, 1)
+
+[node name="InventoryUI" parent="." unique_id=238848079 instance=ExtResource("2_t7aaa")]
+
+[node name="TestControls" type="CanvasLayer" parent="." unique_id=1065185421]
+layer = 200
+
+[node name="Panel" type="PanelContainer" parent="TestControls" unique_id=240645244]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 300.0
+offset_bottom = 352.0
+
+[node name="Margin" type="MarginContainer" parent="TestControls/Panel" unique_id=306904106]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBox" type="VBoxContainer" parent="TestControls/Panel/Margin" unique_id=1696174771]
+layout_mode = 2
+theme_override_constants/separation = 7
+
+[node name="Title" type="Label" parent="TestControls/Panel/Margin/VBox" unique_id=2055943036]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Inventory UI Sandbox"
+
+[node name="Hint" type="Label" parent="TestControls/Panel/Margin/VBox" unique_id=1209652914]
+layout_mode = 2
+text = "Hex hotbar + full honeycomb inventory"
+autowrap_mode = 2
+
+[node name="ToggleFull" type="Button" parent="TestControls/Panel/Margin/VBox" unique_id=656119908]
+layout_mode = 2
+text = "Toggle Full Inventory (E)"
+
+[node name="Populate" type="Button" parent="TestControls/Panel/Margin/VBox" unique_id=585392918]
+layout_mode = 2
+text = "Populate Sample Stacks"
+
+[node name="ClearInventory" type="Button" parent="TestControls/Panel/Margin/VBox" unique_id=2106692129]
+layout_mode = 2
+text = "Clear Inventory"
+
+[node name="AddOne" type="Button" parent="TestControls/Panel/Margin/VBox" unique_id=969439934]
+layout_mode = 2
+text = "Add 1 Complex Item"
+
+[node name="HoldSample" type="Button" parent="TestControls/Panel/Margin/VBox" unique_id=1527935961]
+layout_mode = 2
+text = "Hold Complex Stack x17"
+
+[node name="RotateHeld" type="Button" parent="TestControls/Panel/Margin/VBox" unique_id=1735085683]
+layout_mode = 2
+text = "Rotate Held +120°"
+
+[node name="ClearHeld" type="Button" parent="TestControls/Panel/Margin/VBox" unique_id=1176630453]
+layout_mode = 2
+text = "Clear Held"
+
+[node name="Status" type="Label" parent="TestControls/Panel/Margin/VBox" unique_id=801102002]
+layout_mode = 2
+text = "Status"
+autowrap_mode = 2

@@ -16,7 +16,7 @@ public partial class Sandbox : Node2D {
 	private const float GridSideLength = 48.0f;
 	private const int InitialChunkRadius = 1;
 	private const int DebugGridRadius = 14;
-
+	private InventoryUI _inventoryUi = null!;
 
 	private static readonly TriangleGridPosition
 		LocalShapeCell =
@@ -27,6 +27,7 @@ public partial class Sandbox : Node2D {
 
 
 	private WorldRendererRoot _worldRenderer = null!;
+	private InteractionControllerNode _interactionControllerNode = null!;
 
 	private VBoxContainer _boxList = null!;
 
@@ -63,6 +64,10 @@ public partial class Sandbox : Node2D {
 			GetNode<Label>(
 				"UI/Panel/Margin/VBox/Status");
 
+		_interactionControllerNode =
+			GetNode<InteractionControllerNode>(
+				"InteractionControllerNode");
+
 		GetNode<Button>(
 			"UI/Panel/Margin/VBox/PlaceBox")
 			.Pressed +=
@@ -72,6 +77,8 @@ public partial class Sandbox : Node2D {
 			"UI/Panel/Margin/VBox/PlaceFullShape")
 			.Pressed +=
 			BeginPlaceFullShape;
+
+
 
 
 		/*
@@ -95,6 +102,23 @@ public partial class Sandbox : Node2D {
 		_worldRenderer.Initialize(
 			World,
 			ShapeStore);
+
+
+		var inventory = new Inventory(slotCount: 30);
+		var player = new PlayerState(inventory);
+		var planner = new InteractionPlanner(World, player, ShapeStore);
+
+		_inventoryUi =
+			GetNode<InventoryUI>(
+				"InventoryUI");
+
+		_inventoryUi.Initialize(
+			player,
+			ShapeStore);
+
+		_interactionControllerNode.Initialize(_worldRenderer, player, planner);
+
+
 
 		LoadInitialChunks();
 

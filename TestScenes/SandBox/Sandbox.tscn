@@ -1,14 +1,17 @@
 [gd_scene format=3 uid="uid://cp14f425kbfc3"]
 
-[ext_resource type="Script" uid="uid://eiiumwcojgmo" path="res://TestScenes/Box/Sandbox.cs" id="1_sandbox"]
-[ext_resource type="PackedScene" path="res://Nodes/FieldRenderer/WorldRendererRoot.tscn" id="2_world_renderer"]
+[ext_resource type="Script" uid="uid://eiiumwcojgmo" path="res://TestScenes/SandBox/Sandbox.cs" id="1_kvlt7"]
+[ext_resource type="PackedScene" uid="uid://bria7j7ysi6li" path="res://Nodes/FieldRenderer/WorldRendererRoot.tscn" id="2_eaj3d"]
+[ext_resource type="Script" uid="uid://d1otbv2lgrfvy" path="res://Nodes/Input/InteractionControllerNode.cs" id="3_tqx3e"]
+[ext_resource type="PackedScene" uid="uid://bltrt81w4wj10" path="res://Nodes/UI/Inventory/InventoryUI.tscn" id="4_swuks"]
 
 [node name="Sandbox" type="Node2D" unique_id=1452839396]
-script = ExtResource("1_sandbox")
+script = ExtResource("1_kvlt7")
 
-[node name="WorldRendererRoot" parent="." unique_id=1602334941 instance=ExtResource("2_world_renderer")]
+[node name="WorldRendererRoot" parent="." unique_id=1602334941 instance=ExtResource("2_eaj3d")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1465826378]
+zoom = Vector2(2, 2)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1552925712]
 
@@ -59,3 +62,8 @@ layout_mode = 2
 layout_mode = 2
 text = "Ready"
 autowrap_mode = 2
+
+[node name="InteractionControllerNode" type="Node" parent="." unique_id=2002115583]
+script = ExtResource("3_tqx3e")
+
+[node name="InventoryUI" parent="." unique_id=2087880154 instance=ExtResource("4_swuks")]

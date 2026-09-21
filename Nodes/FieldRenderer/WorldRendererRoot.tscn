@@ -1,20 +1,21 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene format=3 uid="uid://bria7j7ysi6li"]
 
-[ext_resource type="Script" path="res://Nodes/FieldRenderer/WorldRendererRoot.cs" id="1_root"]
-[ext_resource type="PackedScene" path="res://Nodes/FieldRenderer/BoxRendererManager.tscn" id="2_manager"]
+[ext_resource type="Script" uid="uid://7kskx3n4i5tc" path="res://Nodes/FieldRenderer/WorldRendererRoot.cs" id="1_root"]
+[ext_resource type="PackedScene" uid="uid://c82kx8x02ceg" path="res://Nodes/FieldRenderer/BoxRendererManager.tscn" id="2_manager"]
 [ext_resource type="PackedScene" path="res://Nodes/FieldRenderer/ShapeStructureRenderer.tscn" id="3_shapes"]
 [ext_resource type="PackedScene" path="res://Nodes/FieldRenderer/EmbeddedBoxReferenceRenderer.tscn" id="4_references"]
+[ext_resource type="Script" uid="uid://2siw50m8bf8q" path="res://Nodes/FieldRenderer/InteractionOverlayRenderer.cs" id="5_overlay"]
 
-[node name="WorldRendererRoot" type="Node2D"]
+[node name="WorldRendererRoot" type="Node2D" unique_id=801080409]
 script = ExtResource("1_root")
-chunk_size = 32
 
-[node name="WorldContent" type="Node2D" parent="."]
+[node name="WorldContent" type="Node2D" parent="." unique_id=1348436369]
 
-[node name="ShapeStructureRenderer" parent="WorldContent" instance=ExtResource("3_shapes")]
+[node name="ShapeStructureRenderer" parent="WorldContent" unique_id=1319219002 instance=ExtResource("3_shapes")]
 
-[node name="EmbeddedBoxReferenceRenderer" parent="WorldContent" instance=ExtResource("4_references")]
+[node name="EmbeddedBoxReferenceRenderer" parent="WorldContent" unique_id=35337398 instance=ExtResource("4_references")]
 
-[node name="WorldOverlay" type="Node2D" parent="."]
+[node name="WorldOverlay" type="Node2D" parent="." unique_id=926124519]
+script = ExtResource("5_overlay")
 
-[node name="BoxRendererManager" parent="." instance=ExtResource("2_manager")]
+[node name="BoxRendererManager" parent="." unique_id=1752574483 instance=ExtResource("2_manager")]
