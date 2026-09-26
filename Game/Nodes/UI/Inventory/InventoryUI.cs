@@ -317,15 +317,10 @@ public partial class InventoryUI
 	private InventorySlotView CreateSlot(
 		bool isHoldingSlot) {
 
-		var view =
-			new InventorySlotView();
-
-		view.Initialize(
+		return InventorySlotView.Create(
 			_shapeStore!,
 			SlotRadius,
 			isHoldingSlot);
-
-		return view;
 	}
 
 	private void RefreshInventory() {

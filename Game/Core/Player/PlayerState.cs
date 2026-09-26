@@ -21,7 +21,6 @@ public sealed class PlayerState {
     /// 2 = +240 degrees
     /// </summary>
     public int HeldItemRotation { get; private set; }
-
     public bool IsHoldingItem =>
         HeldItem.HasValue;
 

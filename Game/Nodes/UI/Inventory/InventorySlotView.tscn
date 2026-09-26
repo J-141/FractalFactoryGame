@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://coufbc742ufl2"]
+
+[ext_resource type="Script" uid="uid://cbtipxwcr2gjd" path="res://Nodes/UI/Inventory/InventorySlotView.cs" id="1_0edtu"]
+
+[node name="InventorySlotView" type="Control" unique_id=145278431]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0edtu")
+
+[node name="Count" type="Label" parent="." unique_id=1111032368]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 2

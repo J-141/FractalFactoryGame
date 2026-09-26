@@ -4,13 +4,16 @@ using System;
 /// <summary>
 /// UI-only renderer for an ItemStack's Shape.
 ///
-/// The shape subdivision matches ShapeStructure rendering:
-/// - Empty draws nothing.
-/// - Full draws the current triangle.
-/// - other shapes expand recursively through ShapeStore.
-/// - complex detail is capped at MaxSubdivisionDepth.
+/// The preview root triangle faces up and uses:
 ///
-/// Rotation is applied to the canonical Item.Shape before drawing.
+///                 V0
+///                /  \
+///               /    \
+///             V2------V1
+///
+/// Shape content is recursively filled inside that root triangle.
+/// ShapeBorderColor / ShapeBorderWidth draw the border of the ROOT triangle,
+/// not the occupied-region outline.
 /// </summary>
 public partial class ShapeItemPreviewControl
     : Control {
@@ -18,6 +21,14 @@ public partial class ShapeItemPreviewControl
     [Export]
     public Color ShapeColor { get; set; } =
         Colors.White;
+
+    [Export]
+    public Color ShapeBorderColor { get; set; } =
+        Colors.White;
+
+    [Export(PropertyHint.Range, "0.5,8,0.5")]
+    public float ShapeBorderWidth { get; set; } =
+        2.0f;
 
     [Export(PropertyHint.Range, "0,8,1")]
     public int MaxSubdivisionDepth { get; set; } =
@@ -71,16 +82,18 @@ public partial class ShapeItemPreviewControl
                 _stack.Value.Item.Shape,
                 _rotation);
 
-        if (shape == ShapeStore.Empty)
-            return;
-
         TriangleVertices root =
             GetRootTriangle();
 
-        DrawShape(
-            shape,
-            root,
-            depth: 0);
+        if (shape != ShapeStore.Empty) {
+            DrawShape(
+                shape,
+                root,
+                depth: 0);
+        }
+
+        DrawRootBorder(
+            root);
     }
 
     private Shape GetDisplayedShape(
@@ -128,27 +141,38 @@ public partial class ShapeItemPreviewControl
             width *
             heightRatio;
 
-        Vector2 origin =
-            new(
-                (Size.X - width) * 0.5f,
-                (Size.Y - height) * 0.5f);
+        float left =
+            (Size.X - width) *
+            0.5f;
+
+        float top =
+            (Size.Y - height) *
+            0.5f;
 
         /*
-         * Same ordered orientation as TriangleFacing.Down:
+         * Facing-up preview frame:
          *
-         * V0 -------- V1
-         *      \    /
-         *       \  /
-         *        V2
+         *                 V0
+         *                /  \
+         *               /    \
+         *             V2------V1
+         *
+         * V0 = top
+         * V1 = bottom-right
+         * V2 = bottom-left
          */
         return new TriangleVertices(
-            origin,
-            origin + new Vector2(
-                width,
-                0.0f),
-            origin + new Vector2(
-                width * 0.5f,
-                height));
+            new Vector2(
+                left + width * 0.5f,
+                top),
+
+            new Vector2(
+                left + width,
+                top + height),
+
+            new Vector2(
+                left,
+                top + height));
     }
 
     private void DrawShape(
@@ -212,5 +236,33 @@ public partial class ShapeItemPreviewControl
             children.C3,
             triangle.GetChild(3),
             depth + 1);
+    }
+
+    private void DrawRootBorder(
+        TriangleVertices root) {
+
+        if (ShapeBorderWidth <= 0.0f)
+            return;
+
+        DrawLine(
+            root.V0,
+            root.V1,
+            ShapeBorderColor,
+            ShapeBorderWidth,
+            antialiased: true);
+
+        DrawLine(
+            root.V1,
+            root.V2,
+            ShapeBorderColor,
+            ShapeBorderWidth,
+            antialiased: true);
+
+        DrawLine(
+            root.V2,
+            root.V0,
+            ShapeBorderColor,
+            ShapeBorderWidth,
+            antialiased: true);
     }
 }
